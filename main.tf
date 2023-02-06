@@ -74,28 +74,7 @@ resource "aws_route_table_association" "DroHealth_rt_c" {
   route_table_id = aws_route_table.DroHealth_route_table.id
 }
 
-
-resource "aws_security_group" "DroHealth_sg" {
-  name        = "DroHealth_sg"
-  description = "ssh"
-  vpc_id      = aws_vpc.Drohealth_vpc.id
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-#   ingress {
-#     from_port   = 80
-#     to_port     = 80
-#     protocol    = "tcp"
-#     cidr_blocks = ["0.0.0.0/0"]
-#   }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+resource "aws_key_pair" "id_rsa" {
+  key_name = "id_rsa"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA3ANB5W074m7U1lW5+c/nelwEYybRtVZVpp2v6tzhoECRzIHABx8YcoynvU3YUcRONV6FT9uaIOJ4sIojV9xcNlNPTzy/NEzje8cSOgoH/A3ZnAmpcA1s2ZBTsH8sMsyOS4F5yPIaKicTw7axKCi5PjQeXb5cjjA8VMehxFKggfEqZcNLm4UlLCh64wKlVSmqUeU3d53r5j5UUDSbhHkWSrMHv2i9ifIKgGvW69IjwwNDv1t5ImPENa4qRKYudSFDhify8K7/HFdMTg4HJspxyhDK5EiAqP45FzRBE07iC3kU/e0DaCnMtdM29lMq/a10sDDvHO9cd8SznCL62jIV jamin@Lorenzo"
 }
